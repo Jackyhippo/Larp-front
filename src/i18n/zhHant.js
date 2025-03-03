@@ -97,6 +97,7 @@ export default {
 
     userEmailRequired: '使用者信箱必填',
     userEmailInvalid: '使用者信箱格式不符',
+    userAdminRequired: '請勾選此選項',
 
     userCartProductRequired: '購物車劇本必填',
     userCartSelectedDateRequired: '劇本預約日期必填',

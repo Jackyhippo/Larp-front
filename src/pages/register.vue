@@ -43,7 +43,18 @@
         </v-form>
       </v-col>
       <!-- 管理員註冊 -->
-      <v-col cols="6" sm="4">
+      <v-col cols="6" sm="4" class="position-relative">
+        <v-overlay
+          v-model="isOverlayVisible"
+          contained
+          persistent
+          class="admin-overlay d-flex align-center justify-center"
+          :class="{ 'move-left': isMoving }"
+        >
+          <v-btn @click="moveOverlay">
+            {{ isMoving ? '成為一般會員' : '想成為管理員' }}
+          </v-btn>
+        </v-overlay>
         <v-form :disabled="isSubmitting" @submit.prevent="submit">
           <v-text-field
             v-model="account.value.value"
@@ -73,7 +84,7 @@
             counter
           />
           <!-- 管理員註冊選擇框 -->
-          <v-checkbox v-model="isAdmin" :label="$t('user.isAdmin')" />
+          <v-checkbox v-model="isAdmin" :label="$t('user.isAdmin')" :rules="[(v) => v === true || $t('api.userAdminRequired')]" />
           <div class="text-center">
             <v-btn :loading="isSubmitting" type="submit" color="green">
               {{ $t('register.submit') }}
@@ -143,6 +154,12 @@ const passwordConfirm = useField('passwordConfirm')
 
 // 新增管理員選擇框
 const isAdmin = ref(false) // 管理員選項，預設為 false
+const isOverlayVisible = ref(true) // 預設遮罩為顯示狀態
+const isMoving = ref(false)
+// 切換遮罩方向
+const moveOverlay = () => {
+  isMoving.value = !isMoving.value
+}
 
 const submit = handleSubmit(async (values) => {
   try {
@@ -170,6 +187,25 @@ const submit = handleSubmit(async (values) => {
   }
 })
 </script>
+
+<style scoped>
+.admin-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  background: rgb(22, 201, 126); /* 半透明黑色遮罩 */
+  transition: transform 0.5s ease-in-out;
+}
+.position-relative {
+  position: relative;
+}
+.move-left {
+  transform: translateX(-100%);
+}
+</style>
 
 <route lang="yaml">
 meta:
