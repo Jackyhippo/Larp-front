@@ -1,0 +1,1 @@
+import{b as r}from"./route-block-B_A1xBdJ.js";import{ak as t}from"./index-BMJgFNGR.js";const o={};function c(e,f){return"Larp"}typeof r=="function"&&r(o);const s=t(o,[["render",c]]);export{s as default};

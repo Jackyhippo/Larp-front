@@ -1,1 +1,0 @@
-import{b as o}from"./route-block-B_A1xBdJ.js";import{ak as t}from"./index-Cm7_cx15.js";const r={};function c(n,a){return"LarpLocation"}typeof o=="function"&&o(r);const i=t(r,[["render",c]]);export{i as default};
