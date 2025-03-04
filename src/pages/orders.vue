@@ -62,6 +62,14 @@ const getOrders = async () => {
 getOrders()
 </script>
 
+<style scoped>
+.v-data-table {
+  color: #9ad6c9;
+  background-color: #098d5b;
+  border-radius: 10px;
+}
+</style>
+
 <route lang="yaml">
 meta:
   login: true

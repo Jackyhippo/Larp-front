@@ -99,14 +99,16 @@ onMounted(async () => {
 h1 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+  color: white;
 }
 p {
   font-size: 1.2rem;
   margin-bottom: 0.2rem;
+  color: white;
 }
 .v-icon {
   margin-right: 0.5rem;
-  color: #18c5a0;
+  color: #0bebba;
 }
 </style>
 

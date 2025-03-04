@@ -66,7 +66,7 @@
           v-if="selectedDate !== null"
           v-model="selectedDate"
           width="100%"
-          color="primary"
+          color="rgba(185, 8, 8, 0.8)"
           show-adjacent-months
           title="請選擇日期"
           header="請選擇日期"
@@ -202,14 +202,22 @@ const submit = handleSubmit(async (values) => {
 h1 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+  color: white;
 }
 p {
   font-size: 1.2rem;
   margin-bottom: 0.2rem;
+  color: white;
 }
 .v-icon {
   margin-right: 0.5rem;
-  color: #18c5a0;
+  color: #0bebba;
+}
+.v-select {
+  color: #0bebba;
+  background-color: darkred;
+  border-radius: 5px;
+  margin-top: 1rem;
 }
 </style>
 

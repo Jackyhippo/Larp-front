@@ -2,13 +2,16 @@
   <v-app-bar>
     <v-container class="d-flex align-center">
       <v-btn to="/" :active="false">本是同根生</v-btn>
-      <v-btn prepend-icon="mdi-book-heart" to="/larp">
+      <v-btn to="/larp">
+        <v-icon left>mdi-book-heart</v-icon>
         {{ $t('nav.larp') }}
       </v-btn>
-      <v-btn prepend-icon="mdi-book-marker" to="/larplocation">
+      <v-btn to="/larplocation">
+        <v-icon left>mdi-book-marker</v-icon>
         {{ $t('nav.larplocation') }}
       </v-btn>
-      <v-btn prepend-icon="mdi-book-search" to="/larpword">
+      <v-btn to="/larpword">
+        <v-icon left>mdi-book-search</v-icon>
         {{ $t('nav.larpword') }}
       </v-btn>
       <v-spacer />
@@ -23,7 +26,10 @@
         </template>
         <v-list>
           <template v-for="nav of navs">
-            <v-list-item v-if="nav.show" :key="nav.to" :to="nav.to" :prepend-icon="nav.icon">
+            <v-list-item v-if="nav.show" :key="nav.to" :to="nav.to">
+              <template #prepend>
+                <v-icon>{{ nav.icon }}</v-icon>
+              </template>
               {{ nav.text }}
               <v-badge v-if="nav.to === '/cart'" :content="user.cart?.length || 0" floating color="red"></v-badge>
             </v-list-item>
@@ -44,7 +50,8 @@
           <v-list-item>
             <v-menu location="end" open-on-hover>
               <template #activator="{ props }">
-                <v-list-item v-bind="props" prepend-icon="mdi-translate">
+                <v-list-item v-bind="props">
+                  <v-icon left>mdi-translate</v-icon>
                   {{ '翻譯' }}
                 </v-list-item>
               </template>
@@ -150,5 +157,18 @@ function toggleTheme() {
 /* 確保 v-main 至少撐滿畫面高度，這樣 Footer 內容少時會貼底 */
 .content-area {
   min-height: calc(100vh - 64px); /* 64px 是 Navbar 高度，可根據實際需求調整 */
+}
+.v-btn {
+  color: white;
+}
+.v-icon {
+  margin-right: 0.5rem;
+  color: #18c5a0;
+}
+.v-app-bar {
+  background-color: darkred;
+}
+.v-main {
+  background-color: rgb(145, 140, 135);
 }
 </style>

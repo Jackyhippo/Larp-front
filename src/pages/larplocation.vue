@@ -13,7 +13,7 @@
         <product-card v-bind="product"></product-card>
       </v-col>
       <v-col cols="12">
-        <v-pagination v-model="currentPage" :length="totalPage" color="success"></v-pagination>
+        <v-pagination v-model="currentPage" :length="totalPage" color="light-green-darken-4"></v-pagination>
       </v-col>
     </v-row>
   </v-container>
@@ -21,10 +21,7 @@
 
 <script setup>
 import { computed, ref } from 'vue'
-import { useAxios } from '@/composables/axios'
 import ProductCard from '@/components/ProductCard.vue'
-
-const { api } = useAxios()
 
 const ITEMS_PER_PAGE = 9
 const currentPage = ref(1)
@@ -53,17 +50,20 @@ const filteredProducts = computed(() => {
       .slice((currentPage.value - 1) * ITEMS_PER_PAGE, currentPage.value * ITEMS_PER_PAGE)
   )
 })
-
-// const getProducts = async () => {
-//   try {
-//     const { data } = await api.get('/product')
-//     products.value.push(...data.result)
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
-// getProducts()
 </script>
+
+<style scoped>
+.v-select {
+  color: #0bebba;
+  background-color: darkred;
+  border-radius: 10px;
+}
+.v-text-field {
+  color: #0bebba;
+  background-color: darkred;
+  border-radius: 10px;
+}
+</style>
 
 <route lang="yaml">
 meta:

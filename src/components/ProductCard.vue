@@ -81,3 +81,10 @@ defineProps({
   },
 })
 </script>
+
+<style scoped>
+.v-card {
+  background-color: lightgrey;
+  border-radius: 10px;
+}
+</style>

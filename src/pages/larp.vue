@@ -2,15 +2,12 @@
   <v-container width="80%">
     <!-- <h1 class="text-center">{{ $t('nav.larpword') }}</h1> -->
     <v-row>
-      <v-col cols="12">
-        <v-text-field v-model="search" prepend-inner-icon="mdi-magnify"></v-text-field>
-      </v-col>
       <!-- 縣市篩選 -->
-      <v-col cols="12" md="3">
+      <v-col cols="12" md="2">
         <v-select v-model="selectedCity" prepend-inner-icon="mdi-map" :items="cities" label="選擇縣市" clearable></v-select>
       </v-col>
       <!-- 類型篩選 -->
-      <v-col cols="12" md="3">
+      <v-col cols="12" md="2">
         <v-select
           v-model="selectedCategory"
           prepend-inner-icon="mdi-bookshelf"
@@ -20,7 +17,7 @@
         ></v-select>
       </v-col>
       <!-- 難度篩選 -->
-      <v-col cols="12" md="3">
+      <v-col cols="12" md="2">
         <v-select
           v-model="selectedDifficulty"
           prepend-inner-icon="mdi-head-lightbulb"
@@ -30,7 +27,7 @@
         ></v-select>
       </v-col>
       <!-- 人數篩選 -->
-      <v-col cols="12" md="3">
+      <v-col cols="12" md="2">
         <v-select
           v-model="selectedPlayers"
           prepend-inner-icon="mdi-account-group"
@@ -39,11 +36,14 @@
           clearable
         ></v-select>
       </v-col>
+      <v-col cols="12" md="4">
+        <v-text-field v-model="search" prepend-inner-icon="mdi-magnify"></v-text-field>
+      </v-col>
       <v-col v-for="product of filteredProducts" :key="product._id" cols="12" md="6" lg="4">
         <product-card v-bind="product" :is-sheets-product="true"></product-card>
       </v-col>
       <v-col cols="12">
-        <v-pagination v-model="currentPage" :length="totalPage" color="success"></v-pagination>
+        <v-pagination v-model="currentPage" :length="totalPage" color="light-green-darken-4"></v-pagination>
       </v-col>
     </v-row>
   </v-container>
@@ -101,6 +101,19 @@ onMounted(() => {
   fetchData()
 })
 </script>
+
+<style scoped>
+.v-select {
+  color: #0bebba;
+  background-color: darkred;
+  border-radius: 10px;
+}
+.v-text-field {
+  color: #0bebba;
+  background-color: darkred;
+  border-radius: 10px;
+}
+</style>
 
 <route lang="yaml">
 meta:

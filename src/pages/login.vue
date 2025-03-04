@@ -105,6 +105,15 @@ const submit = handleSubmit(async (values) => {
 })
 </script>
 
+<style scoped>
+h1 {
+  color: white;
+}
+.v-text-field {
+  color: darkred;
+}
+</style>
+
 <route lang="yaml">
 meta:
   title: 'nav.login'

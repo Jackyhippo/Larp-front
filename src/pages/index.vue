@@ -135,6 +135,11 @@ const modules = [Navigation, EffectCoverflow, Autoplay, Keyboard]
 </script>
 
 <style scoped>
+h1,
+p {
+  color: white;
+}
+
 .swiper {
   width: 100%;
   padding-top: 50px;

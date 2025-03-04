@@ -52,7 +52,7 @@
           :class="{ 'move-left': isMoving }"
         >
           <v-btn @click="moveOverlay">
-            {{ isMoving ? '成為一般會員' : '想成為管理員' }}
+            {{ isMoving ? '想成為一般會員' : '想成為管理員' }}
           </v-btn>
         </v-overlay>
         <v-form :disabled="isSubmitting" @submit.prevent="submit">
@@ -189,6 +189,15 @@ const submit = handleSubmit(async (values) => {
 </script>
 
 <style scoped>
+h1 {
+  color: white;
+}
+.v-text-field {
+  color: darkred;
+}
+.v-checkbox {
+  color: darkred;
+}
 .admin-overlay {
   position: absolute;
   top: 0;
