@@ -14,7 +14,7 @@ export function useGoogleSheets(sheetId, sheetIndex) {
 
       // 轉換成 Vue 可用的格式
       products.value = rows.map((row) => ({
-        id: row[0], // 使用 Google Sheets 上的 ID
+        _id: row.c[0]?.v || null, // 使用 Google Sheets 上的 ID
         name: row.c[1]?.v || '', // 第 2 欄 "名稱"
         price: row.c[2]?.v || '', // 第 3 欄 "價格"
         category: row.c[3]?.v || '', // 第 4 欄 "分類"
@@ -25,6 +25,10 @@ export function useGoogleSheets(sheetId, sheetIndex) {
         image: row.c[9]?.v || '', // 第 9 欄 "劇照"
         description: row.c[10]?.v || '', // 第 10 欄 "說明"
       }))
+
+      console.log('Parsed Products:', products.value)
+
+      return products.value
     } catch (error) {
       console.error('取得 Google Sheets 資料時發生錯誤:', error)
     }

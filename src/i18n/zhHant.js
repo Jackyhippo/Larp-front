@@ -14,6 +14,7 @@ export default {
     adminOrders: '訂單管理',
     home: '首頁',
     product: '劇本',
+    sheetsproduct: '劇本',
     switch: '切換',
     larp: '熱門劇本',
     larplocation: '各地場館',

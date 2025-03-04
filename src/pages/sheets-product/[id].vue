@@ -81,11 +81,12 @@ const { fetchData } = useGoogleSheets(SHEET_ID, SHEET_INDEX) // 引入自定義�
 // 在頁面加載時，取得指定的商品資料
 onMounted(async () => {
   const productId = route.params.id // 從路由參數獲取商品 id
+  console.log('Product ID:', productId)
   const data = await fetchData() // 從 Google Sheets 獲取所有資料
-  console.log(1111, data)
+  console.log('222', data)
 
-  // 嘗試匹配 _id
-  const foundProduct = data.find((item) => item._id === productId)
+  // 嘗試匹配 _id，並確保 ID 類型一致
+  const foundProduct = data.find((item) => String(item._id) === String(productId))
   if (foundProduct) {
     product.value = foundProduct
   } else {
@@ -111,5 +112,5 @@ p {
 
 <route lang="yaml">
 meta:
-  title: 'nav.product'
+  title: 'nav.sheetsproduct'
 </route>

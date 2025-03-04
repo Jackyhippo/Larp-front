@@ -2,7 +2,10 @@
   <v-card>
     <v-img :src="image" height="200" cover=""></v-img>
     <v-card-title>
-      <router-link :to="'/product/' + _id">{{ name }}</router-link>
+      <router-link :to="isSheetsProduct ? '/sheets-product/' + _id : '/product/' + _id">
+        {{ name }}
+      </router-link>
+      <!-- <router-link :to="'/product/' + _id">{{ name }}</router-link> -->
     </v-card-title>
     <v-card-subtitle>
       <v-icon>mdi-bookshelf</v-icon>
@@ -70,6 +73,11 @@ defineProps({
   location: {
     type: String,
     default: '',
+  },
+  isSheetsProduct: {
+    // 新增布林值，預設 false
+    type: Boolean,
+    default: false,
   },
 })
 </script>

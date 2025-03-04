@@ -40,7 +40,7 @@
         ></v-select>
       </v-col>
       <v-col v-for="product of filteredProducts" :key="product._id" cols="12" md="6" lg="4">
-        <product-card v-bind="product"></product-card>
+        <product-card v-bind="product" :is-sheets-product="true"></product-card>
       </v-col>
       <v-col cols="12">
         <v-pagination v-model="currentPage" :length="totalPage" color="success"></v-pagination>
@@ -56,8 +56,8 @@ import ProductCard from '@/components/ProductCard.vue'
 
 const SHEET_ID = '1lINlC3oU3whplRxu52pMiTcIoCtVwiXbkoj5deZOYAI'
 const SHEET_INDEX = 0 // 第一個工作表
-
 const { products, fetchData } = useGoogleSheets(SHEET_ID, SHEET_INDEX)
+console.log('111', products)
 
 const ITEMS_PER_PAGE = 9
 const currentPage = ref(1)
