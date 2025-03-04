@@ -50,15 +50,18 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
-import { useAxios } from '@/composables/axios'
+import { computed, ref, onMounted } from 'vue'
+import { useGoogleSheets } from '@/composables/useGoogleSheets'
 import ProductCard from '@/components/ProductCard.vue'
 
-const { api } = useAxios()
+const SHEET_ID = '1lINlC3oU3whplRxu52pMiTcIoCtVwiXbkoj5deZOYAI'
+const SHEET_INDEX = 0 // 第一個工作表
+
+const { products, fetchData } = useGoogleSheets(SHEET_ID, SHEET_INDEX)
 
 const ITEMS_PER_PAGE = 9
 const currentPage = ref(1)
-const products = ref([])
+// const products = ref([])
 const search = ref('')
 
 const selectedCity = ref(null)
@@ -93,15 +96,10 @@ const filteredProducts = computed(() => {
   )
 })
 
-// const getProducts = async () => {
-//   try {
-//     const { data } = await api.get('/product')
-//     products.value.push(...data.result)
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
-// getProducts()
+// 🚀 在元件掛載時執行 fetchData()
+onMounted(() => {
+  fetchData()
+})
 </script>
 
 <route lang="yaml">
